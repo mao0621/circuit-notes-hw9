@@ -1,0 +1,20 @@
+{
+  "slug": "_template",
+  "title": "填寫課文標題：明確指出要回答的問題",
+  "summary": "填寫四十五至八十五字的摘要，說明本篇範圍、學習方法與讀者讀完能解決的具體問題；不要只重複標題，也不要聲稱尚未做過的實驗。",
+  "category": "基礎電路",
+  "difficulty": "入門",
+  "minutes": 6,
+  "order": 4,
+  "tags": ["填寫主題標籤", "填寫關鍵概念"],
+  "objectives": ["以可檢查的動詞寫出第一個學習目標。", "寫出第二個學習目標。"],
+  "sections": [
+    {"heading": "定義與模型", "paragraphs": ["填寫變數定義、單位及適用條件。"], "formula": "填寫 Unicode 純文字公式；不需要公式時刪除此欄位。"},
+    {"heading": "觀念與推導", "paragraphs": ["填寫主要觀念，說明為什麼成立。"]},
+    {"heading": "數字例子與檢查", "paragraphs": ["給出可以驗算的例題，註明結果與單位。"]}
+  ],
+  "pitfalls": ["指出一個常見錯誤及修正方法。", "指出模型的限制。"],
+  "exercise": {"question": "寫一題具明確條件與單位的練習。", "hint": "提示計算方向，不直接重複答案。", "answer": "列出代入步驟、計算結果與單位。"},
+  "lab": "ohm",
+  "sources": [{"label": "填寫已查核的原始來源名稱", "url": "https://openstax.org/books/physics/pages/19-1-ohms-law"}]
+}
