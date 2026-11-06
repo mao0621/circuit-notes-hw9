@@ -2,6 +2,8 @@
 
 一個以繁體中文整理基礎電路觀念的靜態知識庫。每篇筆記都包含學習目標、觀念與公式、易錯提醒、練習及來源；部分課文附有可調參數的互動實驗。
 
+[開啟公開網站](https://mao0621.github.io/circuit-notes-hw9/) · [GitHub Repository](https://github.com/mao0621/circuit-notes-hw9)
+
 本專案的重點是建立可重用的內容規則：AI 先閱讀 [AGENTS.md](AGENTS.md)，依固定 JSON 格式新增課文，再由共用模板產生網頁，無須每次重新設計版面。第九週作業主題為「建立自己的 AGENTS.md 或 CLAUDE.md」。
 
 ## 目前內容
@@ -55,8 +57,8 @@ python -m http.server 8000 --directory docs
 | 繳交所需項目 | 位置或狀態 |
 | --- | --- |
 | 專案簡介 | 本 README 首段 |
-| GitHub Repository 連結 | 待發布，完成後填入經確認的實際連結 |
-| 網頁連結 | 待發布，完成後填入經確認的實際連結 |
+| GitHub Repository 連結 | [mao0621/circuit-notes-hw9](https://github.com/mao0621/circuit-notes-hw9) |
+| 網頁連結 | [電路筆記工坊](https://mao0621.github.io/circuit-notes-hw9/) |
 | AI 開發規則 | [AGENTS.md](AGENTS.md) |
 | 如何持續新增內容 | [docs-authoring.md](docs-authoring.md) |
 
