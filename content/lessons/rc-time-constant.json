@@ -1,0 +1,46 @@
+{
+  "slug": "rc-time-constant",
+  "title": "RC 時間常數：電容充電為什麼越來越慢？",
+  "summary": "由零電壓電容的充電過程認識時間常數，將電阻與電容換成正確單位，利用一倍與五倍時間常數估計充電進度，理解指數曲線的意義。",
+  "category": "基礎電路",
+  "difficulty": "入門",
+  "minutes": 8,
+  "order": 3,
+  "tags": ["RC電路", "電容", "時間常數", "指數響應"],
+  "objectives": [
+    "用 τ = RC 計算單一電阻與電容串聯電路的時間常數。",
+    "以充電公式求指定時刻的電容電壓。",
+    "區分接近最終電壓與數學上完全充飽。"
+  ],
+  "sections": [
+    {
+      "heading": "先限定模型與初始條件",
+      "paragraphs": ["考慮理想直流電壓 Vs 經正值電阻 R 對電容 C 充電，初始電容電壓為 0 V。剛接通時電阻兩端電壓最大；隨著電容電壓升高，電流變小，充電速度便逐漸放慢。"],
+      "formula": "Vc(t) = Vs × (1 − exp(−t / τ))，t ≥ 0"
+    },
+    {
+      "heading": "時間常數決定快慢",
+      "paragraphs": ["這個簡單串聯電路的時間常數為 τ = RC。若 R = 10 kΩ、C = 100 μF，先換成 10000 Ω 與 0.0001 F，可得 τ = 1 s。電阻或電容增大，充電曲線沿時間軸拉長。"],
+      "formula": "τ = RC；1 μF = 0.000001 F"
+    },
+    {
+      "heading": "一倍與五倍時間常數",
+      "paragraphs": ["t = τ 時，充電達最終電壓約 63.2%；t = 5τ 時約為 99.3%。五倍時間常數只是常用的近似充飽標準，理想指數曲線在有限時間不會精確等於 Vs。複雜電路則需使用電容所見的等效電阻。"],
+      "formula": "Vc(τ) ≈ 0.6321 × Vs；Vc(5τ) ≈ 0.9933 × Vs"
+    }
+  ],
+  "pitfalls": [
+    "τ 的單位是秒；不要省略 kΩ 與 μF 的倍率。",
+    "本頁充電公式假設初始電容電壓為 0 V。",
+    "5τ 表示接近最終值，並非精確到達 100%。"
+  ],
+  "exercise": {
+    "question": "Vs = 5 V、R = 20 kΩ、C = 50 μF，初始電容電壓為 0 V。時間常數是多少？充電 1 s 後的電容電壓約是多少？",
+    "hint": "先算 20000 × 0.00005；再確認 1 s 是幾倍時間常數。",
+    "answer": "τ = 20000 × 0.00005 = 1 s。t = τ，所以 Vc = 5 × (1 − exp(−1)) ≈ 3.1606 V。"
+  },
+  "lab": "rc",
+  "sources": [
+    {"label": "Analog Devices University Program｜Introduction to RC Circuits", "url": "https://wiki.analog.com/university/courses/engineering_discovery/lab_2"}
+  ]
+}

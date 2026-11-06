@@ -1,0 +1,47 @@
+{
+  "slug": "ohms-law",
+  "title": "歐姆定律：把電壓、電流與電阻連起來",
+  "summary": "從單一電阻電路出發，理解電壓、電流與電阻的關係，練習將毫安培與千歐姆換成基本單位，再用功率判斷計算結果是否合理。",
+  "category": "基礎電路",
+  "difficulty": "入門",
+  "minutes": 6,
+  "order": 1,
+  "tags": ["歐姆定律", "電流", "電阻", "功率"],
+  "objectives": [
+    "用 V = IR 計算單一理想電阻的電流。",
+    "正確換算 Ω、kΩ、A 與 mA。",
+    "計算電阻消耗的功率，辨識歐姆定律的適用條件。"
+  ],
+  "sections": [
+    {
+      "heading": "先認識三個量",
+      "paragraphs": ["V 是電阻兩端的電位差，單位為伏特；I 是流經電阻的電流，單位為安培；R 是電阻值，單位為歐姆。對阻值固定的歐姆性元件，電壓與電流成正比。"],
+      "formula": "V = IR　｜　I = V / R　｜　R = V / I"
+    },
+    {
+      "heading": "先換單位，再代入",
+      "paragraphs": ["在本頁的理想模型中，5 V 跨接於 1 kΩ 電阻：先把 1 kΩ 換成 1000 Ω，再算得 I = 5 / 1000 = 0.005 A，也就是 5 mA。固定電壓時，電阻加倍，電流便減半。"],
+      "formula": "1 kΩ = 1000 Ω　｜　1 mA = 0.001 A"
+    },
+    {
+      "heading": "電流之外，也要算功率",
+      "paragraphs": ["電阻將電能轉成熱，功率可由 P = VI 求得。前例為 5 × 0.005 = 0.025 W，即 25 mW。這是理想值；實體元件還有阻值誤差與溫度影響，二極體等非線性元件也不能一律視為固定電阻。"],
+      "formula": "P = VI = I²R = V² / R"
+    }
+  ],
+  "pitfalls": [
+    "不要把 5 mA 直接當作 5 A 代入。",
+    "V² / R 的 V 是該顆電阻兩端的電壓。",
+    "固定阻值模型有適用範圍，並非所有元件都符合。"
+  ],
+  "exercise": {
+    "question": "將 6 V 加在 2 kΩ 理想電阻兩端，電流與消耗功率各是多少？",
+    "hint": "先將 2 kΩ 換成 2000 Ω；算出電流後再使用 P = VI。",
+    "answer": "I = 6 / 2000 = 0.003 A = 3 mA；P = 6 × 0.003 = 0.018 W = 18 mW。"
+  },
+  "lab": "ohm",
+  "sources": [
+    {"label": "OpenStax｜Physics 19.1：Ohm's law", "url": "https://openstax.org/books/physics/pages/19-1-ohms-law"},
+    {"label": "OpenStax｜University Physics 9.5：Electrical Energy and Power", "url": "https://openstax.org/books/university-physics-volume-2/pages/9-5-electrical-energy-and-power"}
+  ]
+}

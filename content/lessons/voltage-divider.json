@@ -1,0 +1,47 @@
+{
+  "slug": "voltage-divider",
+  "title": "分壓器：為什麼接上負載後電壓會下降？",
+  "summary": "用兩顆電阻建立分壓器，先計算未接負載時的輸出，再將負載與下臂電阻合併，觀察相同的電阻比例為什麼不保證相同的實際輸出。",
+  "category": "基礎電路",
+  "difficulty": "入門",
+  "minutes": 8,
+  "order": 2,
+  "tags": ["分壓器", "串並聯", "負載效應"],
+  "objectives": [
+    "辨識上臂 R1 與下臂 R2，計算無負載輸出。",
+    "用並聯等效電阻計算負載造成的輸出變化。",
+    "說明分壓器輸出受負載影響，不能直接視為穩壓電源。"
+  ],
+  "sections": [
+    {
+      "heading": "先指定輸出位置",
+      "paragraphs": ["R1 接在 Vin 與輸出節點之間，R2 接在輸出節點與接地之間；Vout 是 R2 兩端的電壓。未接負載時兩顆電阻流過相同電流，因此能由串聯總阻值推導分壓公式。"],
+      "formula": "Vout = Vin × R2 / (R1 + R2)"
+    },
+    {
+      "heading": "負載改變下臂的等效電阻",
+      "paragraphs": ["若輸出與接地之間再接負載 RL，它與 R2 並聯。先算 Rp，再以 Rp 取代原公式中的 R2。正值且有限的 RL 會讓 Rp 小於 R2，於是輸出電壓降低。"],
+      "formula": "Rp = R2 × RL / (R2 + RL)；Vout = Vin × Rp / (R1 + Rp)"
+    },
+    {
+      "heading": "用一組數字比較兩種情況",
+      "paragraphs": ["令 Vin = 6 V、R1 = R2 = 10 kΩ。未接負載時輸出為 3 V；接上 RL = 10 kΩ 後，Rp = 5 kΩ，輸出成為 2 V。電阻比例沒變，但負載取走電流，因此設計時必須一起考慮。"],
+      "formula": "無負載：6 × 10 / 20 = 3 V；接負載：6 × 5 / 15 = 2 V"
+    }
+  ],
+  "pitfalls": [
+    "輸出取自 R2，分子應是下臂電阻。",
+    "RL 與 R2 並聯，不能直接把三顆電阻相加。",
+    "提高兩顆電阻值可降低靜態電流，也可能讓負載影響更明顯。"
+  ],
+  "exercise": {
+    "question": "Vin = 9 V、R1 = 20 kΩ、R2 = 10 kΩ。未接負載的輸出是多少？接上 RL = 10 kΩ 後又是多少？",
+    "hint": "第一步用 R2 分壓；第二步先算 10 kΩ 與 10 kΩ 的並聯值。",
+    "answer": "無負載：9 × 10 / (20 + 10) = 3 V。接負載後 Rp = 5 kΩ，Vout = 9 × 5 / (20 + 5) = 1.8 V。"
+  },
+  "lab": "divider",
+  "sources": [
+    {"label": "Analog Devices｜Voltage Divider", "url": "https://www.analog.com/en/resources/glossary/voltage-divider.html"},
+    {"label": "University of Colorado Boulder｜Voltage Dividers：Parallel Impedances", "url": "https://physicslabs.colorado.edu/courses/phys-3330/lab-guides/lab2/"}
+  ]
+}
