@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>專案規則｜Circuit Notes 電路筆記工坊</title><meta name="description" content="用一致的規則，整理可持續擴充的電路學習筆記。">
+<meta name="theme-color" content="#173d35"><link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/styles.css"><script defer src="assets/app.js"></script></head>
+<body><a class="skip-link" href="#main">跳至主要內容</a>
+<aside class="sidebar"><a class="brand" href="index.html" aria-label="Circuit Notes 首頁"><span class="brand-symbol">C<span>＋</span></span><span>Circuit Notes<small>電路筆記工坊</small></span></a>
+<span class="nav-label">WORKSPACE / 學習空間</span><nav aria-label="主要導覽"><a class="nav-main " href="index.html" ><span aria-hidden="true">▦</span>所有筆記<span class="count">3</span></a><a class="nav-main active" href="rules.html"><span aria-hidden="true">⌘</span>專案規則<span class="tiny">MD</span></a></nav>
+<span class="nav-label notes-label">NOTEBOOK / 電路觀念</span><nav aria-label="課文導覽"><a href="lessons/ohms-law.html" class="lesson-nav " ><span>01</span>歐姆定律：把電壓、電流與電阻連起來</a><a href="lessons/voltage-divider.html" class="lesson-nav " ><span>02</span>分壓器：為什麼接上負載後電壓會下降？</a><a href="lessons/rc-time-constant.html" class="lesson-nav " ><span>03</span>RC 時間常數：電容充電為什麼越來越慢？</a></nav>
+<div class="sidebar-bottom"><span class="status-dot"></span>小觀念，慢慢接起來。<p>從一條公式，到一套能持續<br>累積的學習筆記。</p><span class="edition">GEN AI · WEEK 09</span></div></aside>
+<div class="workspace"><header class="topbar"><span>學習工作台 <b>/</b> 專案規則</span><a href="rules.html" class="rules-pill"><i></i>依 AGENTS.md 建立</a></header>
+<main id="main"><section class="rules-heading"><span class="kicker">ONE GUIDE, MANY NOTES</span><h1>寫下一篇之前，<br>先讀懂這套規則。</h1><p>AGENTS.md 是這個專案的共同約定：讓 AI 知道內容放哪裡、該怎麼寫，以及完成後如何驗證。</p></section><section class="workflow"><div><span>01</span><h2>讀取規則</h2><p>先看目的、欄位與修改範圍。</p></div><div><span>02</span><h2>複製範本</h2><p>新增一份課文 JSON，補齊觀念。</p></div><div><span>03</span><h2>建置與檢查</h2><p>確認格式、計算與所有連結。</p></div><div><span>04</span><h2>持續延伸</h2><p>沿用版面，新增有來源的筆記。</p></div></section><section class="rules-document"><div class="code-toolbar"><span>AGENTS.md <small>· 專案根目錄</small></span><div><button id="copy-rules" class="text-button">複製規則</button><a href="AGENTS.md" download>下載 ↧</a></div></div><pre id="rules-text"># Circuit Notes｜電路筆記工坊：AI 協作規則
+
+本文件是整個 Repository 的共同開發規則。修改前先讀本文件，再查看 `README.md`、`content/template.json` 與一篇既有課文。遇到規則無法處理的需求，先說明影響，避免默默改掉整個網站的架構。
+
+## 1. 專案目的與讀者
+
+- 建立供資電相關科系初學者使用的繁體中文電路知識庫。
+- 每一課都要讓讀者能掌握一個觀念、理解公式的成立條件，並完成一題可以驗算的練習。
+- 內容採用同一份資料格式，由共用模板產生頁面。新增課文通常只需要新增一個 JSON 檔，不必重新設計網頁。
+- 網站是教學示例，不宣稱讀者或作者已進行未被記錄的實驗。AI 協作紀錄與實際測試結果必須如實呈現。
+
+## 2. 檔案結構與修改位置
+
+```text
+AGENTS.md                    # 本規則；改規則時須同步檢查受影響的程式
+README.md                    # 安裝、瀏覽與 GitHub Pages 發布方式
+docs-authoring.md             # 新增內容流程與可重用的 AI 提示詞
+build.py                     # Python 標準函式庫的靜態網站產生器
+content/
+  template.json              # 新課文資料模板，不當成正式課文發布
+  lessons/
+    ohms-law.json
+    voltage-divider.json
+    rc-time-constant.json
+assets/
+  styles.css                 # 全站樣式
+  app.js                     # 搜尋、篩選、書籤與互動實驗
+tests/
+  check_project.py           # 專案驗收程式
+docs/                        # build.py 產生，GitHub Pages 的發布目錄
+  index.html
+  rules.html
+  404.html
+  lessons/&lt;slug&gt;.html
+```
+
+**不可直接修改 `docs/` 內的產出檔。** 先修改 `content/`、`assets/` 或 `build.py`，再重新執行建置，並一併提交產出。不要把暫存檔、憑證、個人瀏覽器資料或 API 金鑰加入 Repository。
+
+## 3. 命名與資料格式
+
+- 一篇課文一個檔案：`content/lessons/&lt;slug&gt;.json`。
+- `slug` 使用小寫英文字母、數字與連字號，例如 `rc-time-constant`；必須與檔名一致，不可與既有課文重複。
+- 檔案採 UTF-8、有效 JSON、兩格縮排。不要加入註解或尾逗號。
+- 保留以下欄位名稱；一般加課文不要自行增加新的資料結構。
+
+| 欄位 | 格式與用途 |
+| --- | --- |
+| `slug` | 唯一識別名稱，同時用於網址 |
+| `title` | 繁體中文課名，直接說明本課主題 |
+| `summary` | 能獨立閱讀的簡介，建議約 45～85 個中文字 |
+| `category` | 分類；本專案既有內容使用 `基礎電路` |
+| `difficulty` | 難度；既有內容使用 `入門` |
+| `minutes` | 正整數，預估閱讀與操作時間，不冒稱實際量測時間 |
+| `order` | 整數，決定課文的預設排列；新增時查看現有值 |
+| `tags` | 字串陣列，採具體關鍵詞，例如 `電阻`、`分壓` |
+| `objectives` | 字串陣列，以讀者讀完後能完成的事描述學習目標 |
+| `sections` | 段落物件陣列，每個物件有 `heading`、`paragraphs`，可加 `formula` |
+| `sections[].paragraphs` | 純文字字串陣列，不放 HTML 或可執行內容 |
+| `sections[].formula` | 選填的純文字公式，使用 Unicode，例如 `τ = R × C` |
+| `pitfalls` | 字串陣列，指出易錯觀念與使用限制 |
+| `exercise` | 物件，必須包含 `question`、`hint`、`answer` 三個字串 |
+| `lab` | 僅使用 `ohm`、`divider`、`rc` 或 `none` |
+| `sources` | 來源物件陣列，每個物件包含 `label` 與可開啟的 `url` |
+
+欄位範例：RC 課文使用 `&quot;slug&quot;: &quot;rc-time-constant&quot;`、`&quot;lab&quot;: &quot;rc&quot;`，觀念段落的 `formula` 可寫 `&quot;τ = R × C；Vc(t) = Vs × (1 − e^(−t/τ))&quot;`。完整 JSON 請以 `content/template.json` 與既有課文作為格式範例，不要將模板直接當正式文章發布。
+
+## 4. 每篇課文的內容標準
+
+頁面順序固定為：**簡介 → 學習目標 → 觀念與公式 → 互動實驗（若有）→ 易錯提醒 → 小練習 → 參考來源**。
+
+- 課文一般分成 3～4 個觀念段落；每段先說明物理意義，再給必要公式或數值例子。
+- 首次出現變數時說明其意義與單位；區分 Ω、kΩ、F、μF、s、ms。計算時先換成一致的 SI 單位。
+- 寫清楚模型假設。例如理想分壓公式的輸出端未接負載；RC 充電曲線需要說明初始電壓與輸入條件。
+- 每篇至少有一題數值明確的小練習，提示與答案分開。答案包含運算步驟、合理有效位數與單位。
+- 來源優先採大學公開教材、元件廠商官方教學或官方技術文件。開啟並核對來源是否真的支持該段內容；不要只貼搜尋結果頁或無關首頁。
+- 外部內容應以自己的文字重述。不可複製大段文章、虛構實驗結果、捏造引用或把 AI 回覆當成已核實來源。
+- 一般教學內容以文字與既有互動元件完成，不引入追蹤服務、登入機制、付費 API 或外部 CDN。
+
+## 5. 視覺、互動與無障礙
+
+- 品牌名稱為「Circuit Notes｜電路筆記工坊」。整體風格像清楚、安靜的工程筆記，優先呈現閱讀與練習內容。
+- 主色墨綠 `#173d35`、底色米白 `#f7f6f0`、輔色橘 `#e78a51`。使用既有 CSS 變數與共用元件，避免每篇自行配色。
+- 採系統字體，中文字體可使用本機可用的無襯線字體。文字須保持足夠對比，不能只靠顏色表達狀態。
+- 桌面與手機都須可閱讀；窄螢幕下欄位能自然換行，不能以固定寬度造成水平溢出。
+- 使用語意化標籤、合理標題層級、可辨識的連結文字。所有表單控制都有標籤，按鈕可用鍵盤操作並保留焦點樣式。
+- 首頁搜尋涵蓋課名、簡介與標籤；分類與難度可組合使用，無結果時要顯示清楚提示。
+- 書籤只存於瀏覽器 `localStorage`。儲存不可用時，網站的閱讀與篩選仍須能運作。
+- 互動實驗的輸入值與輸出結果須附單位。處理空值、無效數值與不合理的除數，避免顯示 `NaN` 或 `Infinity`。
+
+## 6. AI 新增一篇課文的固定流程
+
+1. 讀取本文件、`content/template.json` 與主題最接近的既有 JSON。
+2. 檢查現有 slug、排序值與來源，決定新課文的範圍、假設和練習。
+3. 複製模板為 `content/lessons/&lt;new-slug&gt;.json`，填完所有欄位並核對公式、單位和來源。
+4. 若既有互動元件適用，選用對應的 `lab`；不適用就設為 `none`。不要為了放文章而改造互動 API。
+5. 執行 `python build.py` 重新產生網站，再執行 `python tests/check_project.py`。
+6. 透過本機 HTTP 伺服器檢查首頁、新課文、導覽、搜尋、篩選、書籤及小練習。若無瀏覽器可用，要明確記錄此限制。
+7. 查看 Git 差異，確認只包含新文章與必要產出，回報新增檔案、來源、執行過的檢查和仍未驗證的項目。
+
+延伸範例：新增 `rc-time-constant.json` 後，共用產生器應建立 `docs/lessons/rc-time-constant.html`，首頁自動出現 RC 課文、標籤與閱讀連結；其他兩課不需要重寫。未來新增串聯電阻課文時，同樣沿用此流程並選 `lab: &quot;none&quot;`。
+
+## 7. 修改邊界與驗收
+
+- 只加內容時，通常只改 `content/lessons/` 與重新產生的 `docs/`。
+- 只有新的顯示需求無法由既有格式表達時，才修改 schema、產生器或共用樣式；此時一併更新模板、文件與相關驗證。
+- 不刪除既有課文、不任意改 slug；若需更名，先處理舊連結與導覽。
+- 不在新增文章的任務中順便更換框架、套件、配色、發布方式或整站文案。
+- 不執行未經要求的部署、變更分享權限、刪除 Repository 或暴露憑證。已被使用者明確授權的發布任務可在完成檢查後進行。
+
+基本驗收命令：
+
+```bash
+python build.py
+python tests/check_project.py
+python -m http.server 8000 --directory docs
+```
+
+最後一個命令只啟動預覽，不代表已公開。發布前須確認：資料合法、內部連結存在、產出與來源一致、互動值可以驗算、手機與鍵盤可操作；部署後再核對真實的 Repository 與網頁網址。沒有執行的檢查不能寫成通過。
+</pre><p id="copy-status" class="sr-only" role="status"></p></section><section class="extension-banner"><span class="extension-icon" aria-hidden="true">＋</span><div><span class="eyebrow">EXTENSION EXAMPLE</span><h2>用 RC 筆記，示範規則延伸。</h2><p>沿用相同欄位新增 rc-time-constant.json。<br>建置程式會自動加入首頁、導覽與獨立課文頁。</p></div><a class="secondary-button" href="lessons/rc-time-constant.html">打開 RC 筆記 ↗</a></section></main><footer><span>電路筆記工坊 <b>·</b> 把規則留下，讓知識繼續長大。</span><a href="AGENTS.md">閱讀 AGENTS.md ↗</a></footer></div>
+</body></html>
